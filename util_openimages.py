@@ -7,19 +7,15 @@ Created on Fri May  8 21:56:19 2020
 """
 
 import torch
-import torch.nn.functional as F
 import numpy as np
 import random
-from sklearn import preprocessing
 from sklearn.preprocessing import normalize
 import os
 import pickle
 import h5py
 import time
-import scipy.io as sio
 import pandas as pd
 from glob import glob
-from natsort import natsorted
 import torch.utils.data as data
 import pickle
 
@@ -152,7 +148,7 @@ class DATA_LOADER(object):
         print("Data loading started")
         data_set = 'train'
         print(data_set)
-        src = '../data'
+        src = opt.src
         path = os.path.join(src, 'openimages','2018_04')
         att_path = os.path.join(src, 'wiki_contexts','OpenImage_w2v_context_window_10_glove-wiki-gigaword-300.pkl')
         print('loading data')

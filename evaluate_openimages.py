@@ -83,8 +83,9 @@ print("=======================EVALUATION MODE=======================")
 logging.info("=======================EVALUATION MODE=======================")
 test_start_time = time.time()
 
-gzsl_model_path="results/NUS_WIDE_OpenImages_vgg_conv_sa_ff_gc_lr0.0001_lrelu_heads_8_gcontext_1_LRELU_seed_3483_less_than_40_labels/model_latest_4600_1.pth"
-zsl_model_path="results/NUS_WIDE_OpenImages_vgg_conv_sa_ff_gc_lr0.0001_lrelu_heads_8_gcontext_1_LRELU_seed_3483_less_than_40_labels/model_latest_400_7.pth"
+gzsl_model_path="pretrained_weights/model_best_gzsl.pth"
+zsl_model_path="pretrained_weights/model_best_zsl.pth"
+
 paths = [gzsl_model_path, zsl_model_path]
 for model_path in paths:
     print(model_path)
@@ -93,8 +94,8 @@ for model_path in paths:
     logging.info("model loading finished")
     model_test.eval()
 
-    src = "../data"
-    test_loc = os.path.join(src, 'OpenImages', 'test_features_lesa', 'OPENIMAGES_TEST_CONV5_4_LESA_VGG_NO_CENTERCROP_compressed_gzip.h5')
+    src = opt.src
+    test_loc = os.path.join(src, 'OpenImages', 'test_features_lesa', 'OPENIMAGES_TEST_CONV5_4_LESA_VGG_NO_CENTERCROP.h5')
     test_features = h5py.File(test_loc, 'r')
     test_feature_keys = list(test_features.keys())
     image_names = np.unique(np.array([m.split('-')[0] for m in test_feature_keys]))
@@ -106,7 +107,6 @@ for model_path in paths:
     idx_top_unseen = df_top_unseen.values[:, 0]
     assert len(idx_top_unseen) == 400
 
-    ##TODO: ADD A LOOP TO PICK EVERY 1000 CHUNK AND EVALUATE
     print('===> total TEST samples')
     print(ntest)
     logging.info('===> total TEST samples')

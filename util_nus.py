@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# @author: naraysa & akshitac8
+"""
+Created on Fri May  8 21:56:19 2020
+
+@author: naraysa & akshitac8
+"""
 
 import torch
 from sklearn.preprocessing import normalize
@@ -14,6 +18,8 @@ import random
 
 random.seed(3483)
 np.random.seed(3483)
+
+## when seed doesn't reproduce the number save random states
 # rand_states = np.load('random_states.npy', allow_pickle=True)[0]
 # torch.set_rng_state(torch.from_numpy(rand_states[2]))
 # torch.cuda.set_rng_state(torch.from_numpy(rand_states[3]))
@@ -46,9 +52,6 @@ def compute_AP(predictions, labels):
     for idx_cls in range(num_class):
         prediction = predictions[:, idx_cls]
         label = labels[:, idx_cls]
-        #similar to dat for open-images
-        # prediction = predictions[(labels != 0)[:, idx_cls]]
-        # label = labels[(labels != 0)[:, idx_cls]]
         mask = label.abs() == 1
         if (label > 0).sum() == 0:
             empty_class += 1
@@ -67,7 +70,6 @@ def compute_AP(predictions, labels):
     return ap
 
 def compute_F1(predictions, labels, mode_F1, k_val):
-    ## FOR F1 KEEP 7186 CLASSES IN TEST SAMPLE
     idx = predictions.topk(dim=1, k=k_val)[1]
     predictions.fill_(0)
     predictions.scatter_(dim=1, index=idx, src=torch.ones(predictions.size(0), k_val).cuda())
@@ -128,29 +130,23 @@ class DATA_LOADER(object):
         tic = time.time()
         print("Data loading started")
         self.src = opt.src
-        # att_path = os.path.join(self.src,'wiki_contexts','JOURNAL_MERGED_NUS_WIDE_pretrained_w2v_glove-wiki-gigaword-300')
-        att_path = os.path.join(self.src,'wiki_contexts','NUS_WIDE_pretrained_w2v_glove-wiki-gigaword-300')
-        file_tag1k = os.path.join(self.src,'NUS_WID_Tags','TagList1k.txt')
-        file_tag81 = os.path.join(self.src,'ConceptsList','Concepts81.txt')
+        att_path = os.path.join(self.src,'NUS-WIDE', 'wiki_contexts','NUS_WIDE_pretrained_w2v_glove-wiki-gigaword-300')
+        file_tag1k = os.path.join(self.src,'NUS-WIDE', 'NUS_WID_Tags','TagList1k.txt')
+        file_tag81 = os.path.join(self.src,'NUS-WIDE', 'ConceptsList','Concepts81.txt')
         self.seen_cls_idx, _ = get_seen_unseen_classes(file_tag1k, file_tag81)
         src_att = pickle.load(open(att_path, 'rb'))
-        # self.vecs_925 = torch.from_numpy(normalize(src_att[0]))
-        # self.vecs_81 = torch.from_numpy(normalize(src_att[1]))
         self.vecs_925 = torch.from_numpy(normalize(src_att[0][self.seen_cls_idx]))
         self.vecs_81 = torch.from_numpy(normalize(src_att[1]))
 
-        # train_loc = os.path.join(self.src, 'nus_wide', 'journal_nus_seen_train_duplicate_merged_CONV5_VGG_compressed_gzip.h5')
-        train_loc = os.path.join(self.src, 'features' ,'nus_wide_train.h5')
-
+        train_loc = os.path.join(self.src, 'NUS-WIDE', 'features' ,'nus_wide_train.h5')
         self.train_features = h5py.File(train_loc, 'r')
-        
-        img_names = load_dict(os.path.join(self.src, 'img_names.pkl'))
+        img_names = load_dict(os.path.join(self.src, 'NUS-WIDE', 'img_names.pkl'))
         self.image_filenames = img_names['img_names']
 
         if opt.train:
             print("SPLIT TRAIN DATA INTO TRAIN AND VAL")
             train_seen_idx = np.arange(int(0.8*(len(self.image_filenames))))
-            val_seen_idx = np.arange(int(0.8*(len(self.image_filenames))), len(self.image_filenames)) #self.seen_tr_visual_labels[int(0.8*(len(self.seen_tr_visual_labels))):]
+            val_seen_idx = np.arange(int(0.8*(len(self.image_filenames))), len(self.image_filenames))
             assert len(np.intersect1d(train_seen_idx,val_seen_idx)) == 0
             self.train_image_names = np.array(self.image_filenames)[train_seen_idx]
             self.val_image_names = np.array(self.image_filenames)[val_seen_idx]

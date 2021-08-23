@@ -146,14 +146,14 @@ def train(epoch):
             train_labels   = train_labels[temp_label]
             train_inputs   = train_inputs[temp_label]
 
+            ## Train with images containing 40 or less than 40 labels
             _train_labels = train_labels[torch.clamp(train_labels,0,1).sum(1)<=40]
             train_inputs = train_inputs[torch.clamp(train_labels,0,1).sum(1)<=40]
-
             train_inputs = train_inputs.cuda()
             _train_labels = _train_labels.cuda()
 
             vgg_4096 = model_vgg(train_inputs) if model_vgg is not None else None
-            logits = model_BiAM(train_inputs, data.vecs_7186, vgg_4096) #_eval=False
+            logits = model_BiAM(train_inputs, data.vecs_7186, vgg_4096)
             loss = model.ranking_lossT(logits, _train_labels.float())
 
             vggloss = torch.zeros(1).cuda()

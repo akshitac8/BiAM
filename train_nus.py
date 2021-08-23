@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+Created on Fri May  8 21:56:19 2020
 
-# @author: naraysa & akshitac8
+@author: naraysa & akshitac8
+"""
+
 
 import torch
 import torch.backends.cudnn as cudnn
@@ -255,10 +259,10 @@ def test(epoch):
     model_test.load_state_dict(torch.load(model_path))
     model_test.eval()
     src = opt.src
-    test_loc = os.path.join(src, 'features', 'nus_wide_test.h5')
+    test_loc = os.path.join(src, 'NUS-WIDE','features', 'nus_wide_test.h5')
     test_features = h5py.File(test_loc, 'r')
     test_feature_keys = list(test_features.keys())
-    image_filenames = util.load_dict(os.path.join(src, 'test_img_names.pkl'))
+    image_filenames = util.load_dict(os.path.join(src, 'NUS-WIDE', 'test_img_names.pkl'))
     test_image_filenames = image_filenames['img_names']
     ntest = len(test_image_filenames)
     print(ntest)
