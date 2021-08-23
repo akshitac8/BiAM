@@ -130,7 +130,6 @@ dmypy.json
 
 ._.DS_Store
 datasets/NUS-WIDE/features/
-datasets/NUS-WIDE/NUS_WID_Tags/
 datasets/OpenImages/2018_04/
 data
 logs/
