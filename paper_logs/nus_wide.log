@@ -1,0 +1,541 @@
+INFO:root:Process JOB ID :198958
+INFO:root:Namespace(SESSION='camera_ready_256_channel_top_k_6_conv_bias_true_w_g_epoch_40', batch_size=32, beta1=0.9, channel_dim=256, cosinelr_scheduler=True, cuda=True, eval_interval=2, heads=8, job_id='198958', lr=0.001, lr_min=0.0005, manualSeed=3483, nclass_all=1006, nepoch=40, nseen_class=925, save_path='nus_results', src='../../../../data', summary='Summary', test_batch_size=100, test_interval=10, train=True, train_full_data=False, train_full_lr=0.000333, val_batch_size=100, workers=16)
+INFO:root:===> Loading datasets
+INFO:root:../../../../data
+INFO:root:===> Result path 
+INFO:root:nus_results/NUS_WIDE_camera_ready_256_channel_top_k_6_conv_bias_true_w_g_epoch_40
+INFO:root:===> total samples
+INFO:root:129431
+INFO:root:BiAM(
+  (conv_3X3): CONV3_3(
+    (body): Conv2d(512, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn): BatchNorm2d(256, eps=0.001, momentum=0.99, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace)
+  )
+  (region_context_block): RCB(
+    (w_q): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1))
+    (w_k): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1))
+    (w_v): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1))
+    (w_o): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1))
+    (dropout_1): Dropout(p=0.1)
+    (dropout_2): Dropout(p=0.1)
+    (sub_network): C_R(
+      (conv1): Conv2d(256, 512, kernel_size=(1, 1), stride=(1, 1))
+      (conv2): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (scene_context_block): SCB(
+    (sigmoid): Sigmoid()
+    (gcdropout): Dropout(p=0.2)
+    (lrelu): LeakyReLU(negative_slope=0.2)
+    (w_g): Conv2d(4096, 256, kernel_size=(1, 1), stride=(1, 1))
+    (gcff): CONV3_3(
+      (body): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn): BatchNorm2d(256, eps=0.001, momentum=0.99, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+    )
+    (channel_conv): CONV1_1(
+      (body): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (W): Linear(in_features=300, out_features=512, bias=True)
+  (conv_1X1): CONV1_1(
+    (body): Conv2d(512, 512, kernel_size=(1, 1), stride=(1, 1))
+  )
+  (lrelu): LeakyReLU(negative_slope=0.2, inplace)
+)
+INFO:root:initial learning rate 0.001
+INFO:root:Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    eps: 1e-08
+    initial_lr: 0.001
+    lr: 0.0003333333333333333
+    weight_decay: 0.0005
+)
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 1/41 	Time: 552.8389	Loss: 0.9680	LearningRate 0.000333
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 2/41 	Time: 560.7013	Loss: 0.9847	LearningRate 0.000667
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 3/41 	Time: 566.8904	Loss: 0.9899	LearningRate 0.001000
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 4/41 	Time: 558.3135	Loss: 0.9724	LearningRate 0.001000
+INFO:root:------------------------------------------------------------------
+INFO:root:validation mode
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 4/41 	Time: 131.0274	Loss: 1.0648	LearningRate 0.001000
+INFO:root:------------------------------------------------------------------
+INFO:root:SEEN AP=0.0495
+INFO:root:k=5 AT 925: 0.1281,0.1263,0.1301
+INFO:root:k=5 AT 81: 0.2674,0.1835,0.4928 
+INFO:root:4 mF1: 0.12814827263355255 mF1_u_val: 0.26744553446769714 mAP: 0.049515560269355774 lr: 0.001
+INFO:root:Precision: 0.1262809783220291 Recall: 0.13007162511348724
+INFO:root:model saved
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 5/41 	Time: 562.3305	Loss: 0.9655	LearningRate 0.000998
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 6/41 	Time: 541.8972	Loss: 0.9632	LearningRate 0.000994
+INFO:root:------------------------------------------------------------------
+INFO:root:validation mode
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 6/41 	Time: 126.0314	Loss: 1.0651	LearningRate 0.000994
+INFO:root:------------------------------------------------------------------
+INFO:root:SEEN AP=0.0505
+INFO:root:k=5 AT 925: 0.1282,0.1263,0.1301
+INFO:root:k=5 AT 81: 0.2778,0.1906,0.5120 
+INFO:root:6 mF1: 0.1281796246767044 mF1_u_val: 0.27781328558921814 mAP: 0.050530049949884415 lr: 0.0009937231395617905
+INFO:root:Precision: 0.12631188333034515 Recall: 0.1301034539937973
+INFO:root:model saved
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 7/41 	Time: 566.7617	Loss: 0.9586	LearningRate 0.000988
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 8/41 	Time: 548.2768	Loss: 0.9590	LearningRate 0.000980
+INFO:root:------------------------------------------------------------------
+INFO:root:validation mode
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 8/41 	Time: 121.9359	Loss: 1.0685	LearningRate 0.000980
+INFO:root:------------------------------------------------------------------
+INFO:root:SEEN AP=0.0500
+INFO:root:k=5 AT 925: 0.1245,0.1227,0.1263
+INFO:root:k=5 AT 81: 0.2609,0.1791,0.4809 
+INFO:root:8 mF1: 0.1244790107011795 mF1_u_val: 0.2609420120716095 mAP: 0.04998498037457466 lr: 0.0009795839768252047
+INFO:root:Precision: 0.12266518175601959 Recall: 0.12634728848934174
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 9/41 	Time: 535.8320	Loss: 0.9576	LearningRate 0.000970
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 10/41 	Time: 495.9521	Loss: 0.9564	LearningRate 0.000959
+INFO:root:------------------------------------------------------------------
+INFO:root:validation mode
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 10/41 	Time: 117.0413	Loss: 1.0481	LearningRate 0.000959
+INFO:root:------------------------------------------------------------------
+INFO:root:SEEN AP=0.0523
+INFO:root:k=5 AT 925: 0.1306,0.1287,0.1325
+INFO:root:k=5 AT 81: 0.2807,0.1926,0.5173 
+INFO:root:10 mF1: 0.13057562708854675 mF1_u_val: 0.28069573640823364 mAP: 0.05232500657439232 lr: 0.00095889095492038
+INFO:root:Precision: 0.12867297232151031 Recall: 0.1325354129076004
+INFO:root:model saved
+INFO:root:=======================EVALUATION MODE=======================
+INFO:root:nus_results/NUS_WIDE_camera_ready_256_channel_top_k_6_conv_bias_true_w_g_epoch_40/model_best.pth
+INFO:root:107859
+INFO:root:model vgg not none
+INFO:root:completed calculating predictions over all images
+INFO:root:ZSL AP: 0.2535
+INFO:root:k=3: 0.3180,0.2585,0.4132
+INFO:root:k=5: 0.2906,0.1999,0.5326
+INFO:root:GZSL AP:0.0833
+INFO:root:g_k=3:0.1461,0.2387,0.1052
+INFO:root:g_k=5:0.1755,0.2071,0.1522
+INFO:root:------------------------------------------------------------------
+INFO:root:TEST Time: 477.4147
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 11/41 	Time: 540.5724	Loss: 0.9562	LearningRate 0.000946
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 12/41 	Time: 581.7715	Loss: 0.9555	LearningRate 0.000932
+INFO:root:------------------------------------------------------------------
+INFO:root:validation mode
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 12/41 	Time: 121.9184	Loss: 1.0466	LearningRate 0.000932
+INFO:root:------------------------------------------------------------------
+INFO:root:SEEN AP=0.0522
+INFO:root:k=5 AT 925: 0.1288,0.1269,0.1307
+INFO:root:k=5 AT 81: 0.2827,0.1940,0.5210 
+INFO:root:12 mF1: 0.12876923382282257 mF1_u_val: 0.2827044427394867 mAP: 0.0522112101316452 lr: 0.000932238783227382
+INFO:root:Precision: 0.12689287960529327 Recall: 0.13070189952850342
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 13/41 	Time: 543.3037	Loss: 0.9540	LearningRate 0.000917
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 14/41 	Time: 510.3792	Loss: 0.9540	LearningRate 0.000900
+INFO:root:------------------------------------------------------------------
+INFO:root:validation mode
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 14/41 	Time: 117.7369	Loss: 1.0600	LearningRate 0.000900
+INFO:root:------------------------------------------------------------------
+INFO:root:SEEN AP=0.0507
+INFO:root:k=5 AT 925: 0.1236,0.1218,0.1254
+INFO:root:k=5 AT 81: 0.2767,0.1899,0.5099 
+INFO:root:14 mF1: 0.12356952577829361 mF1_u_val: 0.2766963839530945 mAP: 0.05071152374148369 lr: 0.0009003935620932786
+INFO:root:Precision: 0.12176895886659622 Recall: 0.12542416155338287
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 15/41 	Time: 508.6974	Loss: 0.9519	LearningRate 0.000883
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 16/41 	Time: 499.9124	Loss: 0.9509	LearningRate 0.000864
+INFO:root:------------------------------------------------------------------
+INFO:root:validation mode
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 16/41 	Time: 114.6267	Loss: 1.0382	LearningRate 0.000864
+INFO:root:------------------------------------------------------------------
+INFO:root:SEEN AP=0.0531
+INFO:root:k=5 AT 925: 0.1313,0.1294,0.1333
+INFO:root:k=5 AT 81: 0.2826,0.1939,0.5208 
+INFO:root:16 mF1: 0.13130322098731995 mF1_u_val: 0.2825963795185089 mAP: 0.05310158059000969 lr: 0.0008642707190017498
+INFO:root:Precision: 0.1293899565935135 Recall: 0.1332739144563675
+INFO:root:model saved
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 17/41 	Time: 534.0907	Loss: 0.9506	LearningRate 0.000845
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 18/41 	Time: 528.5710	Loss: 0.9494	LearningRate 0.000825
+INFO:root:------------------------------------------------------------------
+INFO:root:validation mode
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 18/41 	Time: 115.3471	Loss: 1.0547	LearningRate 0.000825
+INFO:root:------------------------------------------------------------------
+INFO:root:SEEN AP=0.0528
+INFO:root:k=5 AT 925: 0.1262,0.1243,0.1281
+INFO:root:k=5 AT 81: 0.2787,0.1913,0.5136 
+INFO:root:18 mF1: 0.1261788010597229 mF1_u_val: 0.2787230908870697 mAP: 0.05276091396808624 lr: 0.0008249086404787063
+INFO:root:Precision: 0.12434019148349762 Recall: 0.1280725747346878
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 19/41 	Time: 511.7255	Loss: 0.9487	LearningRate 0.000804
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 20/41 	Time: 504.1767	Loss: 0.9465	LearningRate 0.000783
+INFO:root:------------------------------------------------------------------
+INFO:root:validation mode
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 20/41 	Time: 121.7794	Loss: 1.0559	LearningRate 0.000783
+INFO:root:------------------------------------------------------------------
+INFO:root:SEEN AP=0.0525
+INFO:root:k=5 AT 925: 0.1268,0.1249,0.1287
+INFO:root:k=5 AT 81: 0.2733,0.1876,0.5037 
+INFO:root:20 mF1: 0.12676838040351868 mF1_u_val: 0.2733275294303894 mAP: 0.05252278968691826 lr: 0.0007834387526586667
+INFO:root:Precision: 0.12492119520902634 Recall: 0.12867102026939392
+INFO:root:=======================EVALUATION MODE=======================
+INFO:root:nus_results/NUS_WIDE_camera_ready_256_channel_top_k_6_conv_bias_true_w_g_epoch_40/model_best.pth
+INFO:root:107859
+INFO:root:model vgg not none
+INFO:root:completed calculating predictions over all images
+INFO:root:ZSL AP: 0.2583
+INFO:root:k=3: 0.3214,0.2612,0.4176
+INFO:root:k=5: 0.2924,0.2010,0.5357
+INFO:root:GZSL AP:0.0860
+INFO:root:g_k=3:0.1519,0.2483,0.1094
+INFO:root:g_k=5:0.1809,0.2136,0.1569
+INFO:root:------------------------------------------------------------------
+INFO:root:TEST Time: 539.5778
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 21/41 	Time: 535.4147	Loss: 0.9470	LearningRate 0.000762
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 22/41 	Time: 569.0279	Loss: 0.9448	LearningRate 0.000741
+INFO:root:------------------------------------------------------------------
+INFO:root:validation mode
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 22/41 	Time: 119.5538	Loss: 1.0629	LearningRate 0.000741
+INFO:root:------------------------------------------------------------------
+INFO:root:SEEN AP=0.0543
+INFO:root:k=5 AT 925: 0.1295,0.1276,0.1314
+INFO:root:k=5 AT 81: 0.2689,0.1845,0.4956 
+INFO:root:22 mF1: 0.12947797775268555 mF1_u_val: 0.2689228057861328 mAP: 0.054266076534986496 lr: 0.0007410529015337787
+INFO:root:Precision: 0.1275913268327713 Recall: 0.13142129778862
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 23/41 	Time: 538.7495	Loss: 0.9441	LearningRate 0.000720
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 24/41 	Time: 537.8179	Loss: 0.9427	LearningRate 0.000699
+INFO:root:------------------------------------------------------------------
+INFO:root:validation mode
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 24/41 	Time: 129.1872	Loss: 1.0468	LearningRate 0.000699
+INFO:root:------------------------------------------------------------------
+INFO:root:SEEN AP=0.0550
+INFO:root:k=5 AT 925: 0.1268,0.1250,0.1287
+INFO:root:k=5 AT 81: 0.2837,0.1946,0.5227 
+INFO:root:24 mF1: 0.12681855261325836 mF1_u_val: 0.2836502194404602 mAP: 0.05498102679848671 lr: 0.0006989689535470903
+INFO:root:Precision: 0.12497063726186752 Recall: 0.1287219524383545
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 25/41 	Time: 541.8605	Loss: 0.9408	LearningRate 0.000678
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 26/41 	Time: 547.7596	Loss: 0.9395	LearningRate 0.000658
+INFO:root:------------------------------------------------------------------
+INFO:root:validation mode
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 26/41 	Time: 123.5128	Loss: 1.0389	LearningRate 0.000658
+INFO:root:------------------------------------------------------------------
+INFO:root:SEEN AP=0.0555
+INFO:root:k=5 AT 925: 0.1295,0.1276,0.1314
+INFO:root:k=5 AT 81: 0.2789,0.1914,0.5139 
+INFO:root:26 mF1: 0.1294591724872589 mF1_u_val: 0.27889421582221985 mAP: 0.055473435670137405 lr: 0.0006583955716018857
+INFO:root:Precision: 0.12757277488708496 Recall: 0.13140219449996948
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 27/41 	Time: 574.8316	Loss: 0.9389	LearningRate 0.000639
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 28/41 	Time: 541.2589	Loss: 0.9364	LearningRate 0.000620
+INFO:root:------------------------------------------------------------------
+INFO:root:validation mode
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 28/41 	Time: 122.1576	Loss: 1.0520	LearningRate 0.000620
+INFO:root:------------------------------------------------------------------
+INFO:root:SEEN AP=0.0545
+INFO:root:k=5 AT 925: 0.1375,0.1355,0.1395
+INFO:root:k=5 AT 81: 0.2835,0.1945,0.5224 
+INFO:root:28 mF1: 0.13747510313987732 mF1_u_val: 0.28347909450531006 mAP: 0.054482556879520416 lr: 0.000620497107720512
+INFO:root:Precision: 0.135471910238266 Recall: 0.13953843712806702
+INFO:root:model saved
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 29/41 	Time: 531.3898	Loss: 0.9350	LearningRate 0.000603
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 30/41 	Time: 533.6835	Loss: 0.9336	LearningRate 0.000586
+INFO:root:------------------------------------------------------------------
+INFO:root:validation mode
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 30/41 	Time: 123.3448	Loss: 1.0659	LearningRate 0.000586
+INFO:root:------------------------------------------------------------------
+INFO:root:SEEN AP=0.0554
+INFO:root:k=5 AT 925: 0.1367,0.1347,0.1387
+INFO:root:k=5 AT 81: 0.2813,0.1930,0.5184 
+INFO:root:30 mF1: 0.13665971159934998 mF1_u_val: 0.2812902331352234 mAP: 0.05542369931936264 lr: 0.0005863594585712569
+INFO:root:Precision: 0.13466839492321014 Recall: 0.13871081173419952
+INFO:root:=======================EVALUATION MODE=======================
+INFO:root:nus_results/NUS_WIDE_camera_ready_256_channel_top_k_6_conv_bias_true_w_g_epoch_40/model_best.pth
+INFO:root:107859
+INFO:root:model vgg not none
+INFO:root:completed calculating predictions over all images
+INFO:root:ZSL AP: 0.2577
+INFO:root:k=3: 0.3202,0.2602,0.4161
+INFO:root:k=5: 0.2943,0.2024,0.5392
+INFO:root:GZSL AP:0.0891
+INFO:root:g_k=3:0.1545,0.2524,0.1113
+INFO:root:g_k=5:0.1849,0.2183,0.1604
+INFO:root:------------------------------------------------------------------
+INFO:root:TEST Time: 578.4644
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 31/41 	Time: 566.8257	Loss: 0.9323	LearningRate 0.000571
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 32/41 	Time: 538.3635	Loss: 0.9318	LearningRate 0.000557
+INFO:root:------------------------------------------------------------------
+INFO:root:validation mode
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 32/41 	Time: 125.1046	Loss: 1.0851	LearningRate 0.000557
+INFO:root:------------------------------------------------------------------
+INFO:root:SEEN AP=0.0546
+INFO:root:k=5 AT 925: 0.1371,0.1351,0.1391
+INFO:root:k=5 AT 81: 0.2815,0.1931,0.5187 
+INFO:root:32 mF1: 0.13706114888191223 mF1_u_val: 0.28145238757133484 mAP: 0.05463632941246033 lr: 0.000556957452787917
+INFO:root:Precision: 0.13506397604942322 Recall: 0.1391182541847229
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 33/41 	Time: 557.6543	Loss: 0.9316	LearningRate 0.000544
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 34/41 	Time: 547.0126	Loss: 0.9294	LearningRate 0.000533
+INFO:root:------------------------------------------------------------------
+INFO:root:validation mode
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 34/41 	Time: 129.4915	Loss: 1.0710	LearningRate 0.000533
+INFO:root:------------------------------------------------------------------
+INFO:root:SEEN AP=0.0550
+INFO:root:k=5 AT 925: 0.1348,0.1328,0.1368
+INFO:root:k=5 AT 81: 0.2799,0.1921,0.5159 
+INFO:root:34 mF1: 0.13480313122272491 mF1_u_val: 0.2799481153488159 mAP: 0.05499798804521561 lr: 0.0005331235108521278
+INFO:root:Precision: 0.13283886015415192 Recall: 0.13682635128498077
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 35/41 	Time: 545.6929	Loss: 0.9273	LearningRate 0.000524
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 36/41 	Time: 533.1237	Loss: 0.9239	LearningRate 0.000516
+INFO:root:------------------------------------------------------------------
+INFO:root:validation mode
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 36/41 	Time: 140.1496	Loss: 1.0492	LearningRate 0.000516
+INFO:root:------------------------------------------------------------------
+INFO:root:SEEN AP=0.0538
+INFO:root:k=5 AT 925: 0.1358,0.1338,0.1379
+INFO:root:k=5 AT 81: 0.2713,0.1861,0.4999 
+INFO:root:36 mF1: 0.135825514793396 mF1_u_val: 0.2712557315826416 mAP: 0.05384247377514839 lr: 0.000515514284923592
+INFO:root:Precision: 0.13384634256362915 Recall: 0.13786408305168152
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 37/41 	Time: 553.7799	Loss: 0.9259	LearningRate 0.000509
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 38/41 	Time: 535.7996	Loss: 0.9239	LearningRate 0.000505
+INFO:root:------------------------------------------------------------------
+INFO:root:validation mode
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 38/41 	Time: 128.7111	Loss: 1.0804	LearningRate 0.000505
+INFO:root:------------------------------------------------------------------
+INFO:root:SEEN AP=0.0563
+INFO:root:k=5 AT 925: 0.1352,0.1333,0.1373
+INFO:root:k=5 AT 81: 0.2826,0.1939,0.5207 
+INFO:root:38 mF1: 0.13524219393730164 mF1_u_val: 0.28258734941482544 mAP: 0.056254900991916656 lr: 0.0005045567058493816
+INFO:root:Precision: 0.13327153027057648 Recall: 0.13727200031280518
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 39/41 	Time: 536.0998	Loss: 0.9247	LearningRate 0.000502
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 40/41 	Time: 535.3715	Loss: 0.9226	LearningRate 0.000500
+INFO:root:------------------------------------------------------------------
+INFO:root:validation mode
+INFO:root:------------------------------------------------------------------
+INFO:root:Epoch: 40/41 	Time: 124.6808	Loss: 1.0655	LearningRate 0.000500
+INFO:root:------------------------------------------------------------------
+INFO:root:SEEN AP=0.0555
+INFO:root:k=5 AT 925: 0.1339,0.1320,0.1359
+INFO:root:k=5 AT 81: 0.2792,0.1916,0.5145 
+INFO:root:40 mF1: 0.13391247391700745 mF1_u_val: 0.27921849489212036 mAP: 0.05545063689351082 lr: 0.0005002255632632122
+INFO:root:Precision: 0.1319611817598343 Recall: 0.13592232763767242
+INFO:root:=======================EVALUATION MODE=======================
+INFO:root:nus_results/NUS_WIDE_camera_ready_256_channel_top_k_6_conv_bias_true_w_g_epoch_40/model_best.pth
+INFO:root:107859
+INFO:root:model vgg not none
+INFO:root:completed calculating predictions over all images
+INFO:root:ZSL AP: 0.2577
+INFO:root:k=3: 0.3202,0.2602,0.4161
+INFO:root:k=5: 0.2943,0.2024,0.5392
+INFO:root:GZSL AP:0.0891
+INFO:root:g_k=3:0.1545,0.2524,0.1113
+INFO:root:g_k=5:0.1849,0.2183,0.1604
+INFO:root:------------------------------------------------------------------
+INFO:root:TEST Time: 532.7481
+INFO:root:------------------------------------------------------------------
+INFO:root:===> total samples
+INFO:root:161789
+INFO:root:nus_results/NUS_WIDE_camera_ready_256_channel_top_k_6_conv_bias_true_w_g_epoch_40/model_best.pth
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:FINETUNING Epoch: 1/41 	Time: 716.0916	Loss: 0.9266	LearningRate 0.000333
+INFO:root:------------------------------------------------------------------
+INFO:root:=======================EVALUATION MODE=======================
+INFO:root:nus_results/NUS_WIDE_camera_ready_256_channel_top_k_6_conv_bias_true_w_g_epoch_40/model_best_train_full_1.pth
+INFO:root:107859
+INFO:root:model vgg not none
+INFO:root:completed calculating predictions over all images
+INFO:root:ZSL AP: 0.2605
+INFO:root:k=3: 0.3125,0.2540,0.4060
+INFO:root:k=5: 0.2861,0.1968,0.5243
+INFO:root:GZSL AP:0.0934
+INFO:root:g_k=3:0.1574,0.2572,0.1134
+INFO:root:g_k=5:0.1850,0.2183,0.1604
+INFO:root:------------------------------------------------------------------
+INFO:root:TEST Time: 548.2303
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:FINETUNING Epoch: 2/41 	Time: 678.2071	Loss: 0.9216	LearningRate 0.000333
+INFO:root:------------------------------------------------------------------
+INFO:root:=======================EVALUATION MODE=======================
+INFO:root:nus_results/NUS_WIDE_camera_ready_256_channel_top_k_6_conv_bias_true_w_g_epoch_40/model_best_train_full_2.pth
+INFO:root:107859
+INFO:root:model vgg not none
+INFO:root:completed calculating predictions over all images
+INFO:root:ZSL AP: 0.2642
+INFO:root:k=3: 0.3147,0.2558,0.4089
+INFO:root:k=5: 0.2897,0.1992,0.5308
+INFO:root:GZSL AP:0.0945
+INFO:root:g_k=3:0.1560,0.2550,0.1124
+INFO:root:g_k=5:0.1836,0.2167,0.1592
+INFO:root:------------------------------------------------------------------
+INFO:root:TEST Time: 548.4019
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:FINETUNING Epoch: 3/41 	Time: 675.3951	Loss: 0.9200	LearningRate 0.000333
+INFO:root:------------------------------------------------------------------
+INFO:root:=======================EVALUATION MODE=======================
+INFO:root:nus_results/NUS_WIDE_camera_ready_256_channel_top_k_6_conv_bias_true_w_g_epoch_40/model_best_train_full_3.pth
+INFO:root:107859
+INFO:root:model vgg not none
+INFO:root:completed calculating predictions over all images
+INFO:root:ZSL AP: 0.2579
+INFO:root:k=3: 0.3217,0.2615,0.4181
+INFO:root:k=5: 0.2968,0.2041,0.5439
+INFO:root:GZSL AP:0.0958
+INFO:root:g_k=3:0.1614,0.2638,0.1163
+INFO:root:g_k=5:0.1899,0.2242,0.1647
+INFO:root:------------------------------------------------------------------
+INFO:root:TEST Time: 567.3229
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:FINETUNING Epoch: 4/41 	Time: 678.1121	Loss: 0.9189	LearningRate 0.000333
+INFO:root:------------------------------------------------------------------
+INFO:root:=======================EVALUATION MODE=======================
+INFO:root:nus_results/NUS_WIDE_camera_ready_256_channel_top_k_6_conv_bias_true_w_g_epoch_40/model_best_train_full_4.pth
+INFO:root:107859
+INFO:root:model vgg not none
+INFO:root:completed calculating predictions over all images
+INFO:root:ZSL AP: 0.2643
+INFO:root:k=3: 0.3321,0.2699,0.4315
+INFO:root:k=5: 0.3007,0.2067,0.5509
+INFO:root:GZSL AP:0.0956
+INFO:root:g_k=3:0.1598,0.2612,0.1152
+INFO:root:g_k=5:0.1886,0.2226,0.1636
+INFO:root:------------------------------------------------------------------
+INFO:root:TEST Time: 548.2280
+INFO:root:------------------------------------------------------------------
+INFO:root:TRAINING MODE
+INFO:root:------------------------------------------------------------------
+INFO:root:FINETUNING Epoch: 5/41 	Time: 676.9977	Loss: 0.9188	LearningRate 0.000333
+INFO:root:------------------------------------------------------------------
+INFO:root:=======================EVALUATION MODE=======================
+INFO:root:nus_results/NUS_WIDE_camera_ready_256_channel_top_k_6_conv_bias_true_w_g_epoch_40/model_best_train_full_5.pth
+INFO:root:107859
+INFO:root:model vgg not none
+INFO:root:completed calculating predictions over all images
+INFO:root:ZSL AP: 0.2512
+INFO:root:k=3: 0.3172,0.2578,0.4121
+INFO:root:k=5: 0.2890,0.1988,0.5296
+INFO:root:GZSL AP:0.0949
+INFO:root:g_k=3:0.1519,0.2482,0.1094
+INFO:root:g_k=5:0.1801,0.2126,0.1562
+INFO:root:------------------------------------------------------------------
+INFO:root:TEST Time: 546.6249
+INFO:root:------------------------------------------------------------------
