@@ -26,7 +26,7 @@ cd pytorch-gradual-warmup-lr; python setup.py install; cd ..
 
 ## Attention Visualization
 
-<img src = "https://i.imgur.com/7D6Mi9u.png" width="900">
+<img src = "https://i.imgur.com/LJujDPx.png" width="900">
 
 ## Results
 <table>
@@ -47,8 +47,8 @@ cd pytorch-gradual-warmup-lr; python setup.py install; cd ..
 
 ### Step 1: Data preparation
 
-1) Download pre-computed features and store them at `features` folder inside `BiAM/datasets/NUS-WIDE` directory.
-2) [Optional] You can extract new features of any dimension by downloading original NUS-WIDE dataset from [here](https://lms.comp.nus.edu.sg/wp-content/uploads/2019/research/nuswide/NUS-WIDE.html) and running:
+1) Download pre-computed features from (here)[] and store them at `features` folder inside `BiAM/datasets/NUS-WIDE` directory.
+2) [Optional] You can extract the features on your own by using the original NUS-WIDE dataset from [here](https://lms.comp.nus.edu.sg/wp-content/uploads/2019/research/nuswide/NUS-WIDE.html) and run the below script:
 
 ```
 python feature_extraction/extract_nus_wide.py
@@ -79,16 +79,15 @@ sh scripts/evaluate_nus.sh
 
 2) Store the annotations inside `BiAM/datasets/OpenImages`.
 
-3) Download pre-computed features and store them at `features` folder inside `BiAM/datasets/OpenImages` directory.
-
-4) [Optional] You can extract new features by downloading original OpenImages-v4 dataset by running:
+3) To extract the features for OpenImages-v4 dataset run the below script:
 
 ```
+## Crawl the images from web
 python ./datasets/OpenImages/download_imgs.py  #`data_set` == `train`: download images into `./image_data/train/`
 python ./datasets/OpenImages/download_imgs.py  #`data_set` == `validation`: download images into `./image_data/validation/`
 python ./datasets/OpenImages/download_imgs.py  #`data_set` == `test`: download images into `./image_data/test/`
 
-
+## Run feature extraction codes for all the 3 splits
 python feature_extraction/extract_openimages_train.py
 python feature_extraction/extract_openimages_test.py
 python feature_extraction/extract_openimages_val.py
@@ -97,7 +96,7 @@ python feature_extraction/extract_openimages_val.py
 
 ### Step 2: Training from scratch
 
-To train and evaluate multi-label zero-shot learning model on full OpenImages dataset, please run:
+To train and evaluate multi-label zero-shot learning model on full OpenImages-v4 dataset, please run:
 
 ```
 sh scripts/train_openimages.sh
