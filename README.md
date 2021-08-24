@@ -1,3 +1,5 @@
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/discriminative-region-based-multi-label-zero/multi-label-zero-shot-learning-on-nus-wide)](https://paperswithcode.com/sota/multi-label-zero-shot-learning-on-nus-wide?p=discriminative-region-based-multi-label-zero)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/discriminative-region-based-multi-label-zero/multi-label-zero-shot-learning-on-open-images)](https://paperswithcode.com/sota/multi-label-zero-shot-learning-on-open-images?p=discriminative-region-based-multi-label-zero)
 # Discriminative Region-based Multi-Label Zero-Shot Learning (ICCV 2021)
 [[`arXiv`](https://arxiv.org/pdf/2108.09301.pdf)][[`webpage >> coming soon`](https://akshitac8.github.io/BiAM/)]
 
