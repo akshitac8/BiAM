@@ -1,5 +1,5 @@
 # Discriminative Region-based Multi-Label Zero-Shot Learning (ICCV 2021)
-[[`arXiv`](https://arxiv.org/abs/2104.14294)][[`webpage`](https://akshitac8.github.io/BiAM/)]
+[[`arXiv`](https://arxiv.org/pdf/2108.09301.pdf)][[`webpage`](https://akshitac8.github.io/BiAM/)]
 
 #### [Sanath Narayan](https://sites.google.com/view/sanath-narayan)<sup>\*</sup>, [Akshita Gupta](https://akshitac8.github.io/)<sup>\*</sup>, [Salman Khan](https://salman-h-khan.github.io/), [Fahad Shahbaz Khan](https://sites.google.com/view/fahadkhans/home), [Ling Shao](https://scholar.google.com/citations?user=z84rLjoAAAAJ&hl=en), [Mubarak Shah](https://scholar.google.com/citations?user=p8gsO3gAAAAJ&hl=en) ####
 
