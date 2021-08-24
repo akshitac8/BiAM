@@ -49,7 +49,7 @@ cd pytorch-gradual-warmup-lr; python setup.py install; cd ..
 
 ### Step 1: Data preparation
 
-1) Download pre-computed features from (here)[] and store them at `features` folder inside `BiAM/datasets/NUS-WIDE` directory.
+1) Download pre-computed features from (here)[https://drive.google.com/drive/folders/1IBsJDS6eib_lA0yCBiGKL6enpzLv59Kt?usp=sharing] and store them at `features` folder inside `BiAM/datasets/NUS-WIDE` directory.
 2) [Optional] You can extract the features on your own by using the original NUS-WIDE dataset from [here](https://lms.comp.nus.edu.sg/wp-content/uploads/2019/research/nuswide/NUS-WIDE.html) and run the below script:
 
 ```
