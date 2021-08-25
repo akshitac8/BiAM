@@ -81,7 +81,7 @@ sh scripts/evaluate_nus.sh
 
 2) Store the annotations inside `BiAM/datasets/OpenImages`.
 
-3) To extract the features for OpenImages-v4 dataset run the below script:
+3) To extract the features for OpenImages-v4 dataset run the below scripts for crawling the images and extracting features of them:
 
 ```
 ## Crawl the images from web
