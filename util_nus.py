@@ -189,3 +189,15 @@ class DATA_LOADER(object):
         val_train_label_81 = torch.from_numpy(val_train_label_81).long()
 
         return val_train_feature, val_train_label_925, val_train_label_81
+ 
+def load_checkpoint(model_test, model_path):
+        print("* Loading checkpoint '{}'".format(model_path))
+        checkpoint = torch.load(model_path)
+        model_dict = model_test.state_dict()
+        for k, v in checkpoint.items():
+            if k in model_dict and v.shape == model_dict[k].shape:
+                model_dict[k] = v
+            else:
+                print ('\tMismatched layers: {}'.format(k))
+        model_test.load_state_dict(model_dict)
+        print(" Loading succeed ")
