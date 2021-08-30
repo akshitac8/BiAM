@@ -46,7 +46,30 @@ class Logger:
 def mkdir(path):
     if not os.path.exists(path):
         os.makedirs(path)
-          
+        
+def load_checkpoint(model, weights):
+    checkpoint = torch.load(weights)
+    try:
+        model.load_state_dict(checkpoint["state_dict"])
+    except:
+        state_dict = checkpoint["state_dict"]
+        new_state_dict = OrderedDict()
+        for k, v in state_dict.items():
+            name = k[7:] # remove `module.`
+            new_state_dict[name] = v
+        model.load_state_dict(new_state_dict)
+
+def load_start_epoch(weights):
+    checkpoint = torch.load(weights)
+    epoch = checkpoint["epoch"]
+    return epoch
+
+def load_optim(optimizer, weights):
+    checkpoint = torch.load(weights)
+    optimizer.load_state_dict(checkpoint['optimizer'])
+    for p in optimizer.param_groups: lr = p['lr']
+    return lr
+
 def compute_AP(predictions, labels):
     num_class = predictions.size(1)
     ap = torch.zeros(num_class).cuda()
