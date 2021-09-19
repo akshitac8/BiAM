@@ -5,7 +5,7 @@ import torch.optim as optim
 import torch.backends.cudnn as cudnn
 import torch.nn.functional as F
 import model as model
-import util as util
+import util_openimages as util
 from config import opt
 import numpy as np
 import random
@@ -141,13 +141,13 @@ for model_path in paths:
 
         with torch.no_grad():
             vgg_4096 = model_vgg(features.cuda()) if model_vgg is not None else None
-            logits_400,_,_, vgglogits_400, _, logits_400_cyc  = model_test(features.cuda(), data.vecs_400, vgg_4096)
-            logits_7586,_,_, vgglogits_7586, _, logits_7586_cyc  = model_test(features.cuda(), gzsl_vecs, vgg_4096) ##seen-unseen
-            logits_7186,_,_, vgglogits_7186, _, logits_7186_cyc  = model_test(features.cuda(), data.vecs_7186, vgg_4096) ##seen-unseen
+            logits_400 = model_test(features.cuda(), data.vecs_400, vgg_4096)
+            logits_7586  = model_test(features.cuda(), gzsl_vecs, vgg_4096) ##seen-unseen
+            logits_7186 = model_test(features.cuda(), data.vecs_7186, vgg_4096) ##seen-unseen
         
-        prediction_400[strt:endt,:] = logits_400 + logits_400_cyc[0] if opt.cycleW else logits_400
-        prediction_7586[strt:endt,:] = logits_7586 + logits_7586_cyc[0] if opt.cycleW else logits_7586
-        prediction_7186[strt:endt,:] = logits_7186 + logits_7186_cyc[0] if opt.cycleW else logits_7186
+        prediction_400[strt:endt,:] = logits_400
+        prediction_7586[strt:endt,:] = logits_7586
+        prediction_7186[strt:endt,:] = logits_7186
 
         lab_400[strt:endt,:] = labels_400
         lab_7586[strt:endt,:] = labels_7586
