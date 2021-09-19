@@ -13,7 +13,7 @@ import torch.optim as optim
 import torch.backends.cudnn as cudnn
 import torch.nn.functional as F
 import model as model
-import util as util
+import util_nus as util
 from config import opt
 import numpy as np
 import random
