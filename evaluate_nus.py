@@ -13,7 +13,7 @@ import torch.optim as optim
 import torch.backends.cudnn as cudnn
 import torch.nn.functional as F
 import model as model
-import util as util
+import util_nus as util
 from config import opt
 import numpy as np
 import random
@@ -123,8 +123,8 @@ for m in range(0, ntest, test_batch_size):
     labels_81 = torch.from_numpy(labels_81).long()
 
     with torch.no_grad():
-        logits_81,_,_  = model_test(features.cuda(), data.vecs_81)
-        logits_1006,_,_  = model_test(features.cuda(), gzsl_vecs) ##seen-unseen
+        logits_81  = model_test(features.cuda(), data.vecs_81)
+        logits_1006  = model_test(features.cuda(), gzsl_vecs) ##seen-unseen
 
     prediction_81[strt:endt,:] = logits_81
     prediction_1006[strt:endt,:] = logits_1006
