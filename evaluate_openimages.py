@@ -61,7 +61,7 @@ logging.info(data.ntrain)
 
 model_vgg = None
 model_vgg = model.vgg_net()
-model_test = model.AttentionClassifier(opt, dim_feature=[196,512])
+model_test = model.BiAM(opt, dim_feature=[196,512])
 
 print(model_test)
 logging.info(model_test)
