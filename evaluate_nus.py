@@ -65,9 +65,7 @@ logging.info(opt.src)
 logging.info('===> total samples')
 logging.info(data.ntrain)
 
-model_test = model.AttentionClassifier(opt, dim_feature=[196,512])
-
-# model_att = model.AttentionClassifier(T=10,dim_feature=[196,512]) #visual_labels=data.seen_visual_labels
+model_test = model.BiAM(opt, dim_feature=[196,512])
 print(model_test)
 logging.info(model_test)
 name='NUS_WIDE_{}'.format(opt.SESSION)
