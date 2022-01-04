@@ -1,7 +1,7 @@
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/discriminative-region-based-multi-label-zero/multi-label-zero-shot-learning-on-nus-wide)](https://paperswithcode.com/sota/multi-label-zero-shot-learning-on-nus-wide?p=discriminative-region-based-multi-label-zero)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/discriminative-region-based-multi-label-zero/multi-label-zero-shot-learning-on-open-images)](https://paperswithcode.com/sota/multi-label-zero-shot-learning-on-open-images?p=discriminative-region-based-multi-label-zero)
 # Discriminative Region-based Multi-Label Zero-Shot Learning (ICCV 2021)
-[[`arXiv`](https://arxiv.org/pdf/2108.09301.pdf)][`Project page >> coming soon`]
+[[`Paper`](https://openaccess.thecvf.com/content/ICCV2021/papers/Narayan_Discriminative_Region-Based_Multi-Label_Zero-Shot_Learning_ICCV_2021_paper.pdf)][[`Video`](https://www.youtube.com/watch?v=0MZxWozdRiM)][[`Project Page`](https://akshitac8.github.io/BiAM/)]
 
 #### [Sanath Narayan](https://sites.google.com/view/sanath-narayan)<sup>\*</sup>, [Akshita Gupta](https://akshitac8.github.io/)<sup>\*</sup>, [Salman Khan](https://salman-h-khan.github.io/), [Fahad Shahbaz Khan](https://sites.google.com/view/fahadkhans/home), [Ling Shao](https://scholar.google.com/citations?user=z84rLjoAAAAJ&hl=en), [Mubarak Shah](https://scholar.google.com/citations?user=p8gsO3gAAAAJ&hl=en) ####
 
